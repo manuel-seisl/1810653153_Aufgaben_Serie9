@@ -1,9 +1,6 @@
 package Aufgabe1;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Student implements Serializable
@@ -36,6 +33,37 @@ public class Student implements Serializable
 
         saveStudents(students);
 
+        // Studenten aus Datei lesen
+
+        readStudents();
+
+    }
+
+    public static void readStudents(){
+
+        File file = null;
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        ArrayList<Student> students = new ArrayList<Student>();
+
+        try {
+
+            file = new File("students.txt");
+
+            fis = new FileInputStream(file);
+            ois = new ObjectInputStream(fis);
+
+            students = (ArrayList<Student>) ois.readObject();
+            ois.close();
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+        for (Student student : students){
+            System.out.println(student.toString());
+        }
+
     }
 
     public static void saveStudents(ArrayList<Student> students){
@@ -47,8 +75,6 @@ public class Student implements Serializable
         try {
 
             file = new File("students.txt");
-
-            // Datei erstellen, falls noch nicht vorhanden
 
             if (!file.exists()){
                 file.createNewFile();
@@ -66,4 +92,8 @@ public class Student implements Serializable
 
     }
 
+    @Override
+    public String toString() {
+        return "Vorname: " + firstName + " Nachname: " + lastName + " Alter: " + age + " Matrikelnummer: " + matrikelNummer + " Nationalität: " + nationality;
+    }
 }
