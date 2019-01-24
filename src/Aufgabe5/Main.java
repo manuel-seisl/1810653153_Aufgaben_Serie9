@@ -3,7 +3,10 @@ package Aufgabe5;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.awt.print.Book;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -36,16 +39,17 @@ public class Main
         m.marshal(university, System.out);
         m.marshal(university, new File(UNIVERSITY_URL));
 
-        /*System.out.println();
-        System.out.println("Output from our XML File: ");
+        // Unmarshalling
+
         Unmarshaller um = context.createUnmarshaller();
-        Bookstore bookstore2 = (Bookstore) um.unmarshal(new FileReader(
-                BOOKSTORE_XML));
-        ArrayList<Book> list = bookstore2.getBooksList();
-        for (Book book : list) {
-            System.out.println("Book: " + book.getName() + " from "
-                    + book.getAuthor());
-        }*/
+        University university1 = (University)um.unmarshal(new FileReader(UNIVERSITY_URL));
+
+        ArrayList<Student> list = university1.getStudents();
+
+        for (Student student : list){
+            System.out.println("Student: " + student.getFirstName());
+        }
+
     }
 
 }
