@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<at.ac.fh_kufstein>
+    <university>
+        <student>
+            <age>26</age>
+            <firstName>Manuel</firstName>
+            <lastName>Seisl</lastName>
+            <matrikelNummer>1810653153</matrikelNummer>
+            <nationality>AT</nationality>
+        </student>
+        <student>
+            <age>22</age>
+            <firstName>Christof</firstName>
+            <lastName>Jori</lastName>
+            <matrikelNummer>1810653154</matrikelNummer>
+            <nationality>AT</nationality>
+        </student>
+    </university>
+    <name>FH Kufstein</name>
+</at.ac.fh_kufstein>
